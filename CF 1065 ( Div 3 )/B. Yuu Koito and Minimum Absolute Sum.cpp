@@ -15,11 +15,6 @@ void solve() {
     for(int i = 0; i < n; i++){
         cin >> ar[i];
     }
-    // int x = 0;
-    // for(int i = 0; i < n - 1; i++){
-    //     x += ar[i + 1] - ar[i];
-    // }
-    // cout << abs(x) << " " << abs(ar.back() - ar.front()) <<ln; 
     if(ar[0] == -1)
         ar[0] = ar[n - 1];
     if(ar[n - 1] == -1)
