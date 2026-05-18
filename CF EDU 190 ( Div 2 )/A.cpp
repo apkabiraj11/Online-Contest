@@ -18,15 +18,19 @@ const int N = 1e6 + 9, mod = 1e9 + 7;
 
 
 void solve() {
-    int n, x1, x2, k;
-    cin >> n >> x1 >> x2 >> k;
-    if(n <= 3 ){
-    	cout << 1 << ln;
+    ll a, b, c;
+    cin >> a >> c >> b;
+    if(b < 3 * c){
+    	ll ans = a / 3;
+    	ll avail = a % 3;
+
+    	ll result =  ans * b;
+    	if(b < avail * c)
+    		result += b;
+    	else result += avail * c;
+    	cout << result << ln;
     }
-    else {
-    	ll ans = min((x2 - x1 + n) % n, (x1 - x2 + n) % n) + k;
-    	cout<< ans << ln;
-    }
+    else cout << a * c << ln;
 }
 
 int main() {
@@ -51,3 +55,4 @@ LEARNING IS FUN
 SO ENJOY IT 
 
 ***************/
+

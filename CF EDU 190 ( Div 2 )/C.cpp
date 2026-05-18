@@ -18,15 +18,44 @@ const int N = 1e6 + 9, mod = 1e9 + 7;
 
 
 void solve() {
-    int n, x1, x2, k;
-    cin >> n >> x1 >> x2 >> k;
-    if(n <= 3 ){
-    	cout << 1 << ln;
+    int n;
+    cin >> n;
+    vector<int>ar;
+    ll sum = 0;
+    ll ans = 0;
+    for(int i = 0; i < n; i++){
+    	int x;
+    	cin>> x;
+    	if(x == 1)
+    		sum++;
+    	else {
+    		ans += x;
+    		ar.push_back(x);
+    	}
     }
-    else {
-    	ll ans = min((x2 - x1 + n) % n, (x1 - x2 + n) % n) + k;
-    	cout<< ans << ln;
+    if(ar.size() == 1){
+    	ll rem = (ar[0]) / 2;
+    	ans += min(rem, sum);
     }
+    else if(ar.size() > 1){
+	    for(int i = 0; i < ar.size(); i++){
+	    	if(ar[i]>=4){
+	    		if(sum > 0){
+	    			ans++;
+	    			sum--;
+	    			ar[i] -= 4;
+
+	    			ll remain = ar[i] / 2;
+
+	    			ans += min(remain, sum);
+	    			sum -= min(remain, sum);
+	    		}
+	    	}
+	    }
+    }
+    if(ans < 3)
+    	ans = 0;
+    cout << ans << ln;
 }
 
 int main() {
@@ -51,3 +80,4 @@ LEARNING IS FUN
 SO ENJOY IT 
 
 ***************/
+
