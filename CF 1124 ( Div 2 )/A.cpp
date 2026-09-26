@@ -16,37 +16,21 @@ const int N = 1e6 + 9, mod = 1e9 + 7;
 // 1. find_by_order(k) -> returns iterator to the k-th element (0-indexed)
 // 2. order_of_key(x) -> returns number of elements strictly smaller than x
 
+
 void solve() {
-    int n;
-    cin >> n;
+    int n, k;
+    cin >> n >> k;
 
-    vector<ll> b(n);
-
-    for(int i = 0; i < n; i++) {
-        ll x;
-        cin >> x;
-        b[i] = x - (i + 1);
+    ll ans =0;
+    for(int i = 1;i < k; i++){
+    	ans += 2;
     }
+    n = n - (k - 1);
 
-    sort(b.begin(), b.end());
-
-    int ans = 1, cur = 1;
-
-    for(int i = 1; i < n; i++) {
-        if(b[i] == b[i - 1]) continue;
-
-        if(b[i] == b[i - 1] + 1) {
-            cur++;
-        }
-        else {
-            cur = 1;
-        }
-
-        ans = max(ans, cur);
-    }
-
+    ans += (1 << n);
     cout << ans << ln;
 }
+
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
